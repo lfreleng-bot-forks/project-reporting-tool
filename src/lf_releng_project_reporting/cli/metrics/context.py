@@ -8,8 +8,8 @@ from typing import TYPE_CHECKING, Any
 
 
 if TYPE_CHECKING:
-    # Imported for typing only: cli.metrics.collector imports this module at
-    # runtime, so a runtime import here would be circular.
+    # Imported for typing only: the sibling collector module imports this
+    # module at runtime, so a runtime import here would be circular.
     from .collector import MetricsCollector
 
 

@@ -16,7 +16,7 @@ Phase 13: CLI & User Experience Improvements
 
 import pytest
 
-from cli.features import (
+from lf_releng_project_reporting.cli.features import (
     AVAILABLE_FEATURES,
     FeatureInfo,
     format_feature_list_compact,

@@ -83,6 +83,10 @@ lf-releng-project-reporting/
     │   │   ├── gerrit_client/
     │   │   └── jenkins_client/
     │   ├── reporter.py          # ⭐ Main orchestrator
+    │   ├── cli/                 # Command-line interface
+    │   │   ├── entry.py         # Typer console-script entry point
+    │   │   ├── arguments/
+    │   │   └── wizard/
     │   ├── config/              # Loading, merging, validation
     │   │   ├── loading.py
     │   │   ├── schema.json

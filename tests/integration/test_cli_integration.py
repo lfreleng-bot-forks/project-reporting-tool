@@ -24,7 +24,7 @@ class TestCLIArgumentParsing:
 
     def test_parse_basic_arguments(self):
         """Test parsing basic command-line arguments."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
         args = parser.parse_args(["--project", "TestProject", "--repos-path", "/tmp/repos"])
@@ -34,7 +34,7 @@ class TestCLIArgumentParsing:
 
     def test_parse_output_format_arguments(self):
         """Test parsing output format arguments."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
         args = parser.parse_args(
@@ -45,7 +45,7 @@ class TestCLIArgumentParsing:
 
     def test_parse_verbosity_arguments(self):
         """Test parsing verbosity level arguments."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
 
@@ -59,7 +59,7 @@ class TestCLIArgumentParsing:
 
     def test_parse_time_window_arguments(self):
         """Test parsing time window arguments."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
         args = parser.parse_args(["--project", "TestProject", "--repos-path", "/tmp/repos"])
@@ -70,7 +70,7 @@ class TestCLIArgumentParsing:
 
     def test_invalid_arguments_error(self):
         """Test that invalid arguments raise errors."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
 
@@ -79,8 +79,11 @@ class TestCLIArgumentParsing:
 
     def test_required_arguments_validation(self):
         """Test validation of required arguments."""
-        from cli.arguments import create_argument_parser, validate_arguments
-        from cli.errors import InvalidArgumentError
+        from lf_releng_project_reporting.cli.arguments import (
+            create_argument_parser,
+            validate_arguments,
+        )
+        from lf_releng_project_reporting.cli.errors import InvalidArgumentError
 
         parser = create_argument_parser()
 
@@ -91,7 +94,7 @@ class TestCLIArgumentParsing:
 
     def test_mutually_exclusive_arguments(self):
         """Test handling of mutually exclusive arguments."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
 
@@ -269,25 +272,25 @@ class TestCLIErrorHandling:
 
     def test_exit_code_success(self):
         """Test successful execution returns correct exit code."""
-        from cli.exit_codes import EXIT_SUCCESS
+        from lf_releng_project_reporting.cli.exit_codes import EXIT_SUCCESS
 
         assert EXIT_SUCCESS == 0
 
     def test_exit_code_config_error(self):
         """Test configuration error returns correct exit code."""
-        from cli.exit_codes import EXIT_CONFIG_ERROR
+        from lf_releng_project_reporting.cli.exit_codes import EXIT_CONFIG_ERROR
 
         assert EXIT_CONFIG_ERROR != 0
 
     def test_exit_code_api_error(self):
         """Test API error returns correct exit code."""
-        from cli.exit_codes import EXIT_API_ERROR
+        from lf_releng_project_reporting.cli.exit_codes import EXIT_API_ERROR
 
         assert EXIT_API_ERROR != 0
 
     def test_format_error_message(self):
         """Test formatting of error messages."""
-        from cli.exit_codes import format_exit_message
+        from lf_releng_project_reporting.cli.exit_codes import format_exit_message
 
         message = format_exit_message(1, "Test error")
 
@@ -296,7 +299,7 @@ class TestCLIErrorHandling:
 
     def test_error_suggestions(self):
         """Test that error messages include helpful suggestions."""
-        from cli.errors import suggest_common_fixes
+        from lf_releng_project_reporting.cli.errors import suggest_common_fixes
 
         # Pass an exception, not a string
         error = FileNotFoundError("Configuration file not found")
@@ -308,7 +311,7 @@ class TestCLIErrorHandling:
 
     def test_validation_error_formatting(self):
         """Test formatting of validation errors."""
-        from cli.errors import format_validation_errors
+        from lf_releng_project_reporting.cli.errors import format_validation_errors
 
         errors = [
             {"field": "project", "error": "Required field missing"},
@@ -326,7 +329,7 @@ class TestCLIProgressReporting:
 
     def test_progress_indicator_creation(self):
         """Test creating a progress indicator."""
-        from cli.progress import ProgressIndicator
+        from lf_releng_project_reporting.cli.progress import ProgressIndicator
 
         # Use correct parameter name: desc (not description)
         indicator = ProgressIndicator(total=100, desc="Processing")
@@ -337,7 +340,7 @@ class TestCLIProgressReporting:
 
     def test_progress_update(self):
         """Test updating progress."""
-        from cli.progress import ProgressIndicator
+        from lf_releng_project_reporting.cli.progress import ProgressIndicator
 
         # Use correct parameter name and context manager
         with ProgressIndicator(total=100, desc="Processing", disable=True) as indicator:
@@ -349,7 +352,7 @@ class TestCLIProgressReporting:
 
     def test_estimate_time_remaining(self):
         """Test estimating time remaining."""
-        from cli.progress import estimate_time_remaining
+        from lf_releng_project_reporting.cli.progress import estimate_time_remaining
 
         # Function signature: estimate_time_remaining(current, total, elapsed)
         current = 50
@@ -364,7 +367,7 @@ class TestCLIProgressReporting:
 
     def test_format_count(self):
         """Test formatting count displays."""
-        from cli.progress import format_count
+        from lf_releng_project_reporting.cli.progress import format_count
 
         # Function signature: format_count(count, singular, plural=None)
         formatted = format_count(1, "repository")
@@ -382,7 +385,7 @@ class TestCLIDryRun:
 
     def test_dry_run_validation(self):
         """Test dry-run mode validates without executing."""
-        from cli.validation import DryRunValidator
+        from lf_releng_project_reporting.cli.validation import DryRunValidator
 
         # Use proper config structure expected by validator
         config = {
@@ -401,7 +404,7 @@ class TestCLIDryRun:
 
     def test_dry_run_shows_what_would_happen(self):
         """Test that dry-run shows planned actions."""
-        from cli.validation import DryRunValidator
+        from lf_releng_project_reporting.cli.validation import DryRunValidator
 
         # Use proper config structure
         config = {
@@ -425,7 +428,7 @@ class TestCLIFeatureDiscovery:
 
     def test_list_available_features(self):
         """Test listing all available features."""
-        from cli.features import list_all_features
+        from lf_releng_project_reporting.cli.features import list_all_features
 
         features = list_all_features()
 
@@ -434,7 +437,7 @@ class TestCLIFeatureDiscovery:
 
     def test_get_feature_description(self):
         """Test getting feature descriptions."""
-        from cli.features import get_feature_description
+        from lf_releng_project_reporting.cli.features import get_feature_description
 
         # Test a known feature (if exists)
         try:
@@ -446,7 +449,7 @@ class TestCLIFeatureDiscovery:
 
     def test_search_features(self):
         """Test searching for features."""
-        from cli.features import search_features
+        from lf_releng_project_reporting.cli.features import search_features
 
         results = search_features("cache")
 
@@ -455,7 +458,7 @@ class TestCLIFeatureDiscovery:
 
     def test_get_feature_categories(self):
         """Test getting feature categories."""
-        from cli.features import get_all_categories
+        from lf_releng_project_reporting.cli.features import get_all_categories
 
         categories = get_all_categories()
 

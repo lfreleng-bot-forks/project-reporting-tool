@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
-from cli.error_helpers import wrap_validation_error
+from lf_releng_project_reporting.cli.error_helpers import wrap_validation_error
 
 
 @dataclass(frozen=True)

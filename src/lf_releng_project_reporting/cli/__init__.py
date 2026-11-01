@@ -12,6 +12,7 @@ This package provides:
 - Argument parsing with improved help text
 - Feature discovery
 - Progress indicators
+- The Typer console-script entry point (``entry.cli_main``)
 
 Phase 9: CLI & UX Improvements
 """
@@ -29,6 +30,7 @@ from .arguments import (
     should_generate_zip,
     validate_arguments,
 )
+from .entry import cli_main
 from .errors import (
     APIError,
     CLIError,
@@ -108,6 +110,8 @@ from .wizard import (
 
 
 __all__ = [
+    # Console-script entry point
+    "cli_main",
     # Exit codes
     "ExitCode",
     "get_exit_code_description",

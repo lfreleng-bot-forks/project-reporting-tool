@@ -20,7 +20,7 @@ import pytest
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
-from cli.metrics import (
+from lf_releng_project_reporting.cli.metrics import (
     APIStatistics,
     MetricsCollector,
     OperationMetrics,

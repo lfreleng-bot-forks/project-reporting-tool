@@ -14,7 +14,7 @@ Tests validation, serialization, and convenience methods for all domain models:
 
 import pytest
 
-from cli.errors import ValidationError
+from lf_releng_project_reporting.cli.errors import ValidationError
 from lf_releng_project_reporting.domain import (
     AuthorMetrics,
     OrganizationMetrics,

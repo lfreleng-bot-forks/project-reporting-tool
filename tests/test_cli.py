@@ -11,7 +11,7 @@ Phase 9: CLI & UX Improvements
 
 import pytest
 
-from cli.errors import (
+from lf_releng_project_reporting.cli.errors import (
     APIError,
     CLIError,
     ConfigurationError,
@@ -23,7 +23,7 @@ from cli.errors import (
     format_validation_errors,
     suggest_common_fixes,
 )
-from cli.exit_codes import (
+from lf_releng_project_reporting.cli.exit_codes import (
     EXIT_CONFIG_ERROR,
     EXIT_INVALID_ARGS,
     EXIT_SUCCESS,
@@ -365,7 +365,7 @@ class TestArgumentParser:
 
     def test_create_argument_parser(self):
         """Test that argument parser is created successfully."""
-        from cli.arguments import create_argument_parser
+        from lf_releng_project_reporting.cli.arguments import create_argument_parser
 
         parser = create_argument_parser()
         assert parser is not None
@@ -376,7 +376,7 @@ class TestArgumentParser:
         import tempfile
         from pathlib import Path
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             args = parse_arguments(["--project", "test-project", "--repos-path", tmpdir])
@@ -388,7 +388,7 @@ class TestArgumentParser:
         """Test parsing output format argument."""
         import tempfile
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             args = parse_arguments(
@@ -401,7 +401,7 @@ class TestArgumentParser:
         """Test parsing verbosity flags."""
         import tempfile
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Single verbose
@@ -416,7 +416,7 @@ class TestArgumentParser:
         """Test parsing quiet flag."""
         import tempfile
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             args = parse_arguments(["--project", "test", "--repos-path", tmpdir, "--quiet"])
@@ -426,7 +426,7 @@ class TestArgumentParser:
         """Test parsing dry-run flag."""
         import tempfile
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             args = parse_arguments(["--project", "test", "--repos-path", tmpdir, "--dry-run"])
@@ -436,7 +436,7 @@ class TestArgumentParser:
         """Test parsing list-features flag."""
         import tempfile
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             args = parse_arguments(["--project", "test", "--repos-path", tmpdir, "--list-features"])
@@ -446,7 +446,7 @@ class TestArgumentParser:
         """Test parsing show-feature flag."""
         import tempfile
 
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             args = parse_arguments(
@@ -456,7 +456,7 @@ class TestArgumentParser:
 
     def test_validate_nonexistent_path(self):
         """Test validation fails for nonexistent path."""
-        from cli.arguments import parse_arguments
+        from lf_releng_project_reporting.cli.arguments import parse_arguments
 
         with pytest.raises(InvalidArgumentError) as exc_info:
             parse_arguments(
@@ -469,7 +469,11 @@ class TestArgumentParser:
         """Test getting verbosity level from arguments."""
         import tempfile
 
-        from cli.arguments import VerbosityLevel, get_verbosity_level, parse_arguments
+        from lf_releng_project_reporting.cli.arguments import (
+            VerbosityLevel,
+            get_verbosity_level,
+            parse_arguments,
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Normal
@@ -492,7 +496,7 @@ class TestArgumentParser:
         """Test getting log level from arguments."""
         import tempfile
 
-        from cli.arguments import get_log_level, parse_arguments
+        from lf_releng_project_reporting.cli.arguments import get_log_level, parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Default
@@ -513,7 +517,11 @@ class TestArgumentParser:
         """Test getting output formats from arguments."""
         import tempfile
 
-        from cli.arguments import OutputFormat, get_output_formats, parse_arguments
+        from lf_releng_project_reporting.cli.arguments import (
+            OutputFormat,
+            get_output_formats,
+            parse_arguments,
+        )
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Default (all)
@@ -534,7 +542,7 @@ class TestArgumentParser:
         """Test detection of special modes."""
         import tempfile
 
-        from cli.arguments import is_special_mode, parse_arguments
+        from lf_releng_project_reporting.cli.arguments import is_special_mode, parse_arguments
 
         with tempfile.TemporaryDirectory() as tmpdir:
             # Normal mode
@@ -561,7 +569,7 @@ class TestFeatureDiscovery:
 
     def test_list_all_features(self):
         """Test listing all available features."""
-        from cli.features import list_all_features
+        from lf_releng_project_reporting.cli.features import list_all_features
 
         output = list_all_features()
         assert "Available Feature Checks" in output
@@ -571,7 +579,7 @@ class TestFeatureDiscovery:
 
     def test_get_features_by_category(self):
         """Test getting features organized by category."""
-        from cli.features import get_features_by_category
+        from lf_releng_project_reporting.cli.features import get_features_by_category
 
         features = get_features_by_category()
         assert "CI/CD" in features
@@ -580,7 +588,7 @@ class TestFeatureDiscovery:
 
     def test_get_feature_description(self):
         """Test getting description for a feature."""
-        from cli.features import get_feature_description
+        from lf_releng_project_reporting.cli.features import get_feature_description
 
         desc = get_feature_description("dependabot")
         assert "Dependabot" in desc
@@ -591,7 +599,7 @@ class TestFeatureDiscovery:
 
     def test_get_feature_category(self):
         """Test getting category for a feature."""
-        from cli.features import get_feature_category
+        from lf_releng_project_reporting.cli.features import get_feature_category
 
         category = get_feature_category("dependabot")
         assert category == "CI/CD"
@@ -602,7 +610,7 @@ class TestFeatureDiscovery:
 
     def test_get_features_in_category(self):
         """Test getting all features in a category."""
-        from cli.features import get_features_in_category
+        from lf_releng_project_reporting.cli.features import get_features_in_category
 
         features = get_features_in_category("CI/CD")
         assert "dependabot" in features
@@ -610,7 +618,7 @@ class TestFeatureDiscovery:
 
     def test_get_all_categories(self):
         """Test getting all categories."""
-        from cli.features import get_all_categories
+        from lf_releng_project_reporting.cli.features import get_all_categories
 
         categories = get_all_categories()
         assert "CI/CD" in categories
@@ -619,7 +627,7 @@ class TestFeatureDiscovery:
 
     def test_search_features(self):
         """Test searching for features."""
-        from cli.features import search_features
+        from lf_releng_project_reporting.cli.features import search_features
 
         results = search_features("github")
         assert len(results) > 0
@@ -627,7 +635,7 @@ class TestFeatureDiscovery:
 
     def test_format_feature_list_compact(self):
         """Test compact feature list formatting."""
-        from cli.features import format_feature_list_compact
+        from lf_releng_project_reporting.cli.features import format_feature_list_compact
 
         output = format_feature_list_compact()
         assert "dependabot" in output
@@ -635,7 +643,7 @@ class TestFeatureDiscovery:
 
     def test_get_feature_count(self):
         """Test getting total feature count."""
-        from cli.features import get_feature_count
+        from lf_releng_project_reporting.cli.features import get_feature_count
 
         count = get_feature_count()
         assert count > 0
@@ -643,7 +651,7 @@ class TestFeatureDiscovery:
 
     def test_get_category_count(self):
         """Test getting total category count."""
-        from cli.features import get_category_count
+        from lf_releng_project_reporting.cli.features import get_category_count
 
         count = get_category_count()
         assert count > 0

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # SPDX-FileCopyrightText: 2026 The Linux Foundation
 
-"""Run the configuration wizard with ``python -m cli.wizard``.
+"""Run the configuration wizard with ``python -m lf_releng_project_reporting.cli.wizard``.
 
 The wizard used to be a single module, whose ``if __name__ == "__main__"``
 block made that invocation work. A package ``__init__`` cannot be executed

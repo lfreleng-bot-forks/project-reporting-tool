@@ -530,7 +530,7 @@ def test_validate_config_file_invalid(valid_config: dict[str, Any]):
 
 def test_validate_config_file_not_found():
     """Test validating non-existent file."""
-    from cli.errors import ConfigurationError
+    from lf_releng_project_reporting.cli.errors import ConfigurationError
 
     with pytest.raises(ConfigurationError, match="Configuration file not found"):
         validate_config_file(Path("/nonexistent/config.yaml"))
@@ -538,7 +538,7 @@ def test_validate_config_file_not_found():
 
 def test_validate_config_file_invalid_yaml():
     """Test validating file with invalid YAML."""
-    from cli.errors import ConfigurationError
+    from lf_releng_project_reporting.cli.errors import ConfigurationError
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
         f.write("invalid: yaml: syntax: [")

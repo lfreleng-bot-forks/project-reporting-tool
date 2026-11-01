@@ -394,7 +394,7 @@ Use feature information to plan your repository improvements:
 ### From Python Code
 
 ```python
-from cli.features import (
+from lf_releng_project_reporting.cli.features import (
     get_feature_info,
     list_all_features,
     show_feature_details,
@@ -442,7 +442,7 @@ A: Check the detection method with `--show-feature` to understand what files are
 
 ### Q: Want to add a custom feature?
 
-A: Edit `src/cli/features.py` and add to `AVAILABLE_FEATURES` registry.
+A: Edit `src/lf_releng_project_reporting/cli/features/models.py` and add to `AVAILABLE_FEATURES` registry.
 
 ---
 
@@ -515,7 +515,7 @@ features:
 You can extend the feature registry in your own code:
 
 ```python
-from cli.features import AVAILABLE_FEATURES
+from lf_releng_project_reporting.cli.features import AVAILABLE_FEATURES
 
 # Add custom feature
 AVAILABLE_FEATURES['my-custom-feature'] = (
@@ -530,7 +530,7 @@ AVAILABLE_FEATURES['my-custom-feature'] = (
 ### Filtering Features
 
 ```python
-from cli.features import get_features_in_category, search_features
+from lf_releng_project_reporting.cli.features import get_features_in_category, search_features
 
 # Get all CI/CD features
 ci_cd = get_features_in_category('CI/CD')
@@ -544,7 +544,7 @@ github_features = search_features('github')
 ## See Also
 
 - **CLI Guide:** `docs/CLI_GUIDE.md`
-- **Feature Implementation:** `src/cli/features.py`
+- **Feature Implementation:** `src/lf_releng_project_reporting/cli/features/models.py`
 - **Feature Tests:** `tests/test_cli/test_features.py`
 - **Phase 13 Summary:** `PHASE_13_STEP_3_COMPLETE.md`
 

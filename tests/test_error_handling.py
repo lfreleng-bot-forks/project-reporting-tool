@@ -15,7 +15,7 @@ from pathlib import Path
 import pytest
 from utils.assertions import assert_host_in_text
 
-from cli.error_helpers import (
+from lf_releng_project_reporting.cli.error_helpers import (
     CLIPermissionError,
     format_error_context,
     handle_cli_error,
@@ -25,7 +25,7 @@ from cli.error_helpers import (
     wrap_network_error,
     wrap_validation_error,
 )
-from cli.errors import (
+from lf_releng_project_reporting.cli.errors import (
     APIError,
     CLIError,
     ConfigurationError,

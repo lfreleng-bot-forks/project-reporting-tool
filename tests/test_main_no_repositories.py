@@ -60,7 +60,7 @@ def test_main_returns_error_exit_code_on_no_repositories(patched_main):
 
 def test_main_no_repositories_is_retryable(patched_main):
     """The returned exit code is classified as retryable for CI re-runs."""
-    from cli.exit_codes import should_retry
+    from lf_releng_project_reporting.cli.exit_codes import should_retry
 
     exit_code = main_module.main(patched_main)
     assert should_retry(exit_code) is True

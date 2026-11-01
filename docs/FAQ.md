@@ -631,7 +631,7 @@ else:
 Or use the CLI module directly:
 
 ```python
-from cli import parse_arguments, validate_arguments
+from lf_releng_project_reporting.cli import parse_arguments, validate_arguments
 from lf_releng_project_reporting.config import load_configuration
 
 args = parse_arguments(['--project', 'test', '--repos-path', './repos'])

@@ -210,7 +210,7 @@ def main(args=None) -> int:
     try:
         # If args not provided, parse from command line
         if args is None:
-            from cli import parse_arguments
+            from lf_releng_project_reporting.cli import parse_arguments
 
             args = parse_arguments()
 

@@ -21,7 +21,7 @@ from pathlib import Path
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
-from cli.validation import dry_run, DryRunValidator
+from lf_releng_project_reporting.cli.validation import dry_run, DryRunValidator
 
 
 def demo_valid_config():
@@ -246,7 +246,7 @@ def main():
     print("\nFor more information, see:")
     print("  - docs/sessions/phase9_step3_dry_run_summary.md")
     print("  - docs/sessions/phase9_progress.md")
-    print("  - src/cli/validation.py")
+    print("  - src/lf_releng_project_reporting/cli/validation/")
     print()
 
 
