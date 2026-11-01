@@ -417,7 +417,7 @@ custom/path/config.yaml
 From Python code:
 
 ```python
-from cli.wizard import create_config_from_template
+from lf_releng_project_reporting.cli.wizard import create_config_from_template
 
 # Create configuration
 config_path = create_config_from_template(

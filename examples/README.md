@@ -103,7 +103,7 @@ When adding new examples:
 - **Phase 9 Progress:** `docs/sessions/phase9_progress.md`
 - **Dry Run Summary:** `docs/sessions/phase9_step3_dry_run_summary.md`
 - **CLI Reference:** `docs/PHASE_9_CLI_UX_PLAN.md`
-- **Source Code:** `src/cli/validation.py`
+- **Source Code:** `src/lf_releng_project_reporting/cli/validation/`
 - **Tests:** `tests/test_cli_validation.py`
 
 ## Requirements
