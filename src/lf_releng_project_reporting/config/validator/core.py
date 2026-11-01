@@ -14,8 +14,8 @@ import json
 from pathlib import Path
 from typing import Any
 
-from cli.error_helpers import wrap_config_error, wrap_file_error
-from cli.errors import ConfigurationError
+from lf_releng_project_reporting.cli.error_helpers import wrap_config_error, wrap_file_error
+from lf_releng_project_reporting.cli.errors import ConfigurationError
 
 from .results import ValidationCategory, ValidationResult
 from .schema_errors import _SCHEMA_ERROR_FORMATTERS, _extract_quoted

@@ -30,7 +30,7 @@ class ExitCode(IntEnum):
 
     Usage:
         >>> import sys
-        >>> from src.cli.exit_codes import ExitCode
+        >>> from lf_releng_project_reporting.cli.exit_codes import ExitCode
         >>>
         >>> # Success case
         >>> sys.exit(ExitCode.SUCCESS)

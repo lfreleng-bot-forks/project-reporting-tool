@@ -15,7 +15,7 @@ from typing import Any
 try:
     import httpx
 except ImportError:
-    from cli.errors import ConfigurationError
+    from lf_releng_project_reporting.cli.errors import ConfigurationError
 
     raise ConfigurationError(
         "httpx package is required for GitHub API client",
