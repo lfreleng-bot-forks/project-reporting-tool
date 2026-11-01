@@ -21,16 +21,26 @@ import pytest
 import yaml
 from utils.assertions import assert_host_in_text
 
-from cli.arguments import create_argument_parser
-from cli.error_context import (
+from lf_releng_project_reporting.cli.arguments import create_argument_parser
+from lf_releng_project_reporting.cli.error_context import (
     ErrorContext,
     detect_github_auth_error,
     detect_missing_config,
     detect_missing_repos_path,
 )
-from cli.features import get_feature_info, list_all_features, search_features, show_feature_details
-from cli.metrics import MetricsCollector
-from cli.wizard import FULL_TEMPLATE, MINIMAL_TEMPLATE, STANDARD_TEMPLATE, ConfigurationWizard
+from lf_releng_project_reporting.cli.features import (
+    get_feature_info,
+    list_all_features,
+    search_features,
+    show_feature_details,
+)
+from lf_releng_project_reporting.cli.metrics import MetricsCollector
+from lf_releng_project_reporting.cli.wizard import (
+    FULL_TEMPLATE,
+    MINIMAL_TEMPLATE,
+    STANDARD_TEMPLATE,
+    ConfigurationWizard,
+)
 
 
 # =============================================================================
@@ -404,7 +414,11 @@ class TestPerformanceMetricsIntegration:
 
     def test_metrics_formatting_helpers(self):
         """Test metrics formatting utilities."""
-        from cli.metrics import format_bytes, format_duration, format_percentage
+        from lf_releng_project_reporting.cli.metrics import (
+            format_bytes,
+            format_duration,
+            format_percentage,
+        )
 
         # Test duration formatting
         duration_str = format_duration(65.5)

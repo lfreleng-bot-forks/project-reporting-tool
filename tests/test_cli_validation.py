@@ -21,7 +21,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from cli.validation import (
+from lf_releng_project_reporting.cli.validation import (
     DryRunValidator,
     ValidationResult,
     dry_run,

@@ -238,7 +238,7 @@ def reset_global_state():
     """
     # Reset metrics collector
     try:
-        from cli.metrics import reset_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import reset_metrics_collector
 
         reset_metrics_collector()
     except ImportError:

@@ -19,7 +19,7 @@ import yaml
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
-from cli.wizard import (
+from lf_releng_project_reporting.cli.wizard import (
     FULL_TEMPLATE,
     MINIMAL_TEMPLATE,
     STANDARD_TEMPLATE,
@@ -414,7 +414,7 @@ class TestConfigurationWizard:
 class TestRunWizard:
     """Test run_wizard convenience function."""
 
-    @patch("cli.wizard.api.ConfigurationWizard")
+    @patch("lf_releng_project_reporting.cli.wizard.api.ConfigurationWizard")
     def test_run_wizard_calls_wizard(self, mock_wizard_class, tmp_path):
         """Test run_wizard instantiates and runs wizard."""
         mock_wizard = MagicMock()
@@ -427,7 +427,7 @@ class TestRunWizard:
         mock_wizard_class.assert_called_once()
         mock_wizard.run.assert_called_once_with(str(output_path))
 
-    @patch("cli.wizard.api.ConfigurationWizard")
+    @patch("lf_releng_project_reporting.cli.wizard.api.ConfigurationWizard")
     def test_run_wizard_without_path(self, mock_wizard_class):
         """Test run_wizard without explicit path."""
         mock_wizard = MagicMock()

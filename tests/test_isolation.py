@@ -23,7 +23,7 @@ class TestGlobalStateIsolation:
 
     def test_metrics_collector_is_reset_between_tests_first(self):
         """First test to modify metrics collector."""
-        from cli.metrics import get_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import get_metrics_collector
 
         collector = get_metrics_collector()
         collector.record_api_call("GitHub", 0.5, cached=False, failed=False)
@@ -34,7 +34,7 @@ class TestGlobalStateIsolation:
 
     def test_metrics_collector_is_reset_between_tests_second(self):
         """Second test to verify metrics collector was reset."""
-        from cli.metrics import get_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import get_metrics_collector
 
         collector = get_metrics_collector()
 
@@ -43,7 +43,10 @@ class TestGlobalStateIsolation:
 
     def test_metrics_collector_multiple_resets(self):
         """Test that metrics collector can be reset multiple times."""
-        from cli.metrics import get_metrics_collector, reset_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import (
+            get_metrics_collector,
+            reset_metrics_collector,
+        )
 
         # First use
         collector1 = get_metrics_collector()
@@ -63,7 +66,7 @@ class TestGlobalStateIsolation:
 
     def test_global_state_reset_function(self):
         """Test that reset_global_state() works correctly."""
-        from cli.metrics import get_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import get_metrics_collector
 
         # Modify state
         collector = get_metrics_collector()
@@ -334,7 +337,7 @@ class TestIsolationValidation:
 
     def test_reset_global_state_is_idempotent(self):
         """Test that reset_global_state can be called multiple times."""
-        from cli.metrics import get_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import get_metrics_collector
 
         get_metrics_collector().record_api_call("GitHub", 0.5, cached=False, failed=False)
 
@@ -362,7 +365,7 @@ class TestRealWorldIsolationScenarios:
 
     def test_metrics_collection_scenario_first(self):
         """First test collecting metrics."""
-        from cli.metrics import get_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import get_metrics_collector
 
         collector = get_metrics_collector()
 
@@ -375,7 +378,7 @@ class TestRealWorldIsolationScenarios:
 
     def test_metrics_collection_scenario_second(self):
         """Second test - should have clean metrics."""
-        from cli.metrics import get_metrics_collector
+        from lf_releng_project_reporting.cli.metrics import get_metrics_collector
 
         collector = get_metrics_collector()
 

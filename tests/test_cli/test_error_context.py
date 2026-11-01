@@ -19,7 +19,7 @@ from pathlib import Path
 import pytest
 from utils.assertions import assert_host_in_text
 
-from cli.error_context import (
+from lf_releng_project_reporting.cli.error_context import (
     ErrorContext,
     auto_detect_error_context,
     detect_disk_space_error,
@@ -32,7 +32,7 @@ from cli.error_context import (
     detect_rate_limit_error,
     detect_validation_error,
 )
-from cli.errors import (
+from lf_releng_project_reporting.cli.errors import (
     APIError,
     CLIError,
     ConfigurationError,
